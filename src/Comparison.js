@@ -3,8 +3,8 @@ import soundError from './media/error.mp3';
 import soundSuccess from './media/correct.mp3';
 import {level,choise} from './List';
 
-  let Otvet = 0;
-  sessionStorage.schet = 0;
+  let Reply = 0;
+  sessionStorage.tick = 0;
   sessionStorage.count=5;
   sessionStorage.flag=0;
   function CheckAnswer(e) {
@@ -19,15 +19,15 @@ import {level,choise} from './List';
       audio.play();
       audioCorrect.pause();
       sessionStorage.flag = 1;
-      Otvet = 1;
-      sessionStorage.schet =  Number(sessionStorage.schet) + Number(sessionStorage.count);
+      Reply = 1;
+      sessionStorage.tick =  Number(sessionStorage.tick) + Number(sessionStorage.count);
     }
     else if(answer !== correct && sessionStorage.flag==='0' && !e.target.classList.contains('error')){
       e.target.classList.add('error');
       let audio = new Audio(soundError);
       audio.play();
-      Otvet = 0;
+      Reply = 0;
       sessionStorage.count = sessionStorage.count - 1;
     }
   }
-export {CheckAnswer, Otvet};
+export {CheckAnswer, Reply};
