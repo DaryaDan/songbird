@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import birdsData from "./birds";
-import {CheckAnswer, Otvet} from './Comparison';
+import {CheckAnswer, Reply} from './Comparison';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import randomInteger from './Random';
@@ -42,8 +42,8 @@ handlClick(e){
   let img = birdsData[this.state.level][id].image;
   let descript = birdsData[this.state.level][id].description;
   let species = birdsData[this.state.level][id].species;
-  let scopes = sessionStorage.schet;
-  let check = Otvet;
+  let scopes = sessionStorage.tick;
+  let check = Reply;
   let instruction = document.querySelector('.instruction');
   let card = document.querySelector('.card-body');
   let descr = document.querySelector('.bird-description');
@@ -68,7 +68,9 @@ restart(){
   document.querySelector('.random-bird').style.display = "flex";
   document.querySelector('.game-over').style.display = "none";
   document.querySelector('.game-win').style.display = "none";
-  sessionStorage.schet = 0;
+  let firstElem = document.querySelectorAll('.pagination li');
+  firstElem[0].classList.add('active');
+  sessionStorage.tick = 0;
   this.setState({
     soundTittle: birdsData[0][choise].audio,
     scopes: 0
@@ -76,6 +78,7 @@ restart(){
 }
 
 newLevel(e){
+  let checker=0;
   choise=randomInteger();
   document.querySelector('.right div audio').pause();
   if(this.state.level === 5 && sessionStorage.flag === "1"){
@@ -83,6 +86,7 @@ newLevel(e){
        document.querySelector('.row').style.display = "none";
        document.querySelector('.random-bird').style.display = "none";
        document.querySelector('.game-win').style.display = "block";
+       checker=1;
        level = -1;
       }
       else {
@@ -90,20 +94,22 @@ newLevel(e){
      document.querySelector('.random-bird').style.display = "none";
      document.querySelector('.game-over').style.display = "block";
      level = -1;
+     checker=1;
    }}
   sessionStorage.flag=0;
 sessionStorage.count = 5;
 document.querySelector('.btn').classList.remove('btn-next');
 let changeActive = document.querySelectorAll('.pagination li');
   changeActive.forEach(el => el.classList.remove('active'));
-  if(level<5){
+if(level<5){
   level = level + 1;
+  if(checker !== 1){
   changeActive[level].classList.add('active');
-}
+}}
 let instruction = document.querySelector('.instruction');
 let card = document.querySelector('.card-body');
 let descr = document.querySelector('.bird-description');
-let check = Otvet;
+let check = Reply;
 instruction.style.display = "block";
 card.style.display = "none";
 descr.style.display = "none";
