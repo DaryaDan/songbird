@@ -140,7 +140,7 @@ const birdsData = [
       name: 'Беларусь',
       species: 'Минск',
       description: 'Беларусь — государство в Восточной Европе. Названия жителей: белорус, белоруска, белорусы. Территория: 207 600 км². Население: 9 475 174 чел. Официальные языки: белорусский, русский.',
-      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Flag_of_Belarus.svg/1920px-Flag_of_Belarus.svg.png',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Flag_of_Belarus_%281918%2C_1991%E2%80%931995%29.svg',
       audio: 'https://discoveric.ru/upload/anthem/7/7-1.mp3'
     },
     {
